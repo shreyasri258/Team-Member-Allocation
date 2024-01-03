@@ -1,6 +1,6 @@
 import './App.css'
 import * as React from 'react';
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import 'bootstrap/dist/css/bootstrap.css';
 import Header from './Header';
 import Footer from './Footer';
@@ -9,9 +9,10 @@ import Employees  from './Employees';
 
 
 export default function App() {
+  const [selectedTeam,setTeam]=useState( "TeamB");
 
   
-  const [employees,setEmployees] = useState([{
+  const [employees,setEmployees] = useState(JSON.parse(localStorage.getItem('employees')) || [{
     id: 1,
     fullName: "Bob Jones",
     designation: "JavaScript Developer",
@@ -95,6 +96,17 @@ export default function App() {
     gender: "male",
     teamName: "TeamD"
   }]);
+
+//Local Storage
+useEffect (()=>{
+  localStorage.setItem('employeeList',JSON.stringify(employees))
+    },[employees]);
+  
+    useEffect (()=>{
+      localStorage.setItem('selectedTeam',JSON.stringify(employees))
+        },[selectedTeam]);
+  
+
 function handleTeamSelectionChange(event){
 console.log(event.target.value); 
 setTeam(event.target.value);
@@ -104,8 +116,8 @@ const transformedEmployees = employees.map((employee)=> employee.id === parseInt
 
 setEmployees(transformedEmployees);
 }
-const [selectedTeam,setTeam]=useState("TeamB");
 
+  
   return (
     <div>
       <Header selectedTeam={selectedTeam}
