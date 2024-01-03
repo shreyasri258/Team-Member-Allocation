@@ -3,7 +3,7 @@ import * as React from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
 import Header from './Header';
 import Footer from './Footer';
-import Content from './Content';
+//import Content from './Content';
 import Employees  from './Employees';
 
 

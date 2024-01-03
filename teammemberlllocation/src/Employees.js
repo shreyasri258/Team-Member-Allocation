@@ -1,5 +1,7 @@
 import * as React from 'react';
 import { useState } from "react";
+import Femaleimage from './images/Femaleimage.jpg'
+import Maleimage from './images/Maleimage.jpg'
 const Employees = () => {
     const [employees,setEmployees] = useState([{
         id: 1,
@@ -87,11 +89,28 @@ const Employees = () => {
       }]);
     
     return(
-  <main>{
+  <main className='container'>
+    <div className='row justify-content-center mt-3 mb-3'>
+        <div className='col-8'>
+            <div className='card-collection'>
+        {
+
 employees.map((employee) => (
-    <p>{employee.fullName}</p>
+    //add gap between cards & cursor pointer
+    <div id={employee.id} className='card m-2' style={{cursor:'pointer'}}>
+
+        {(employee.gender === 'male')?<img src={Maleimage} className='card-img-top'></img>
+        :<img src={Femaleimage} className='card-img-top'></img>}
+        
+        <div className='card-body'>
+            <h2 className='card-title'>Full Name:{employee.fullName}</h2>
+            <h4 className='card-text'>Designation:{employee.designation}</h4>
+        </div>
+    </div>
 ))
- } </main>
+ }</div></div>
+ </div>
+  </main>
     );
 }
   export default Employees;
