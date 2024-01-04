@@ -1,7 +1,11 @@
 import './App.css'
 import * as React from 'react';
 import { useState,useEffect } from "react";
+import { BrowserRouter as Router,Route,Routes } from 'react-router-dom';
+import Nav from './Nav';
 import 'bootstrap/dist/css/bootstrap.css';
+import GroupedTeamMembers from './GroupedTeamMembers';
+import NotFound from './NotFound';
 import Header from './Header';
 import Footer from './Footer';
 //import Content from './Content';
@@ -9,10 +13,11 @@ import Employees  from './Employees';
 
 
 export default function App() {
-  const [selectedTeam,setTeam]=useState( "TeamB");
+  const [selectedTeam,setTeam]=useState( 'TeamB');
+  
 
   
-  const [employees,setEmployees] = useState(JSON.parse(localStorage.getItem('employees')) || [{
+  const [employees,setEmployees] = useState(JSON.parse(localStorage.getItem('employeeList')) || [{
     id: 1,
     fullName: "Bob Jones",
     designation: "JavaScript Developer",
@@ -119,21 +124,31 @@ setEmployees(transformedEmployees);
 
   
   return (
+    <Router>
+      <Nav ></Nav>
     <div>
       <Header selectedTeam={selectedTeam}
       teamMemberCount={employees.filter((employee)=> employee.teamName === selectedTeam).length}
       ></Header>
+ 
+   <Routes>
    
-    {/* props drilling */}
-     <h1><Employees employees={employees}
+    <Route path='/' element={<Employees employees={employees}
                     selectedTeam={selectedTeam}
                     handleEmployeeCardClick={handleEmployeeCardClick}
                     handleTeamSelectionChange={handleTeamSelectionChange}
      
-     ></Employees></h1>
+     ></Employees>}>
+    
+     
+     </Route>
+     <Route path='/GroupedTeamMembers' element={<GroupedTeamMembers></GroupedTeamMembers>}></Route>
+     <Route path='*' element={<NotFound></NotFound>}></Route>
+     </Routes>
       <Footer></Footer>
-    </div>
    
+    </div>
+    </Router>
     
   );
 }
