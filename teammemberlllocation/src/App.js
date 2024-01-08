@@ -142,7 +142,8 @@ setEmployees(transformedEmployees);
     
      
      </Route>
-     <Route path='/GroupedTeamMembers' element={<GroupedTeamMembers></GroupedTeamMembers>}></Route>
+     <Route path='/GroupedTeamMembers' element={<GroupedTeamMembers>employees={employees}
+     selectedTeam={selectedTeam} setTeam={setTeam}</GroupedTeamMembers>}></Route>
      <Route path='*' element={<NotFound></NotFound>}></Route>
      </Routes>
       <Footer></Footer>
