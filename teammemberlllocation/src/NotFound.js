@@ -1,12 +1,12 @@
-const NotFound = ({selectedTeam,teamMemberCount}) => {
-    return(
-  <header className="container">
-    <div className="row justify-content-center mt-3 mb-4">
+const NotFound = ({ selectedTeam, teamMemberCount }) => {
+  return (
+    <header className="container">
+      <div className="row justify-content-center mt-3 mb-4">
         <div className="col-8">
-    <h1 className="text-danger">404 Page Not Found</h1>
+          <h1 className="text-danger">404 Page Not Found</h1>
+        </div>
       </div>
-    </div>
     </header>
-  
-    );}
-  export default NotFound;
+  );
+};
+export default NotFound;
