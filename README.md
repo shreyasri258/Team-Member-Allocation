@@ -1,4 +1,4 @@
-# Team Member Allocation Project
+# Team Member Allocation
 
 Team Member Allocation is a web application designed to streamline the process of managing and allocating team members to various projects. This project is implemented using React and Bootstrap, offering a modern and responsive user interface for efficient team management.
 
